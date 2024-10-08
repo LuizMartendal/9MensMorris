@@ -1,3 +1,5 @@
+import sys
+
 from utils import *
 
 
@@ -46,7 +48,7 @@ def AI_vs_human(heuristic):
         evalBoard = minimax(board, depth, False, alpha, beta, True, heuristic)
 
         if evalBoard.evaluate == float('-inf'):
-            print("YOU LOST!")
+            print("YOU WIN!")
             sys.exit()
         else:
             board = evalBoard.board
@@ -95,8 +97,8 @@ def AI_vs_human(heuristic):
                 print(str(e))
                 print("Invalid entry. Try Again please.")
 
-        if evaluateStage23(board) == float('inf'):
-            print("YOU WIN!")
+        if possibleMoves_stage2or3(board) == float('inf'):
+            print("YOU LOST!")
             exit(0)
 
         printBoard(board)
@@ -105,7 +107,7 @@ def AI_vs_human(heuristic):
                              beta, False, heuristic)
 
         if evaluation.evaluate == float('-inf'):
-            print("YOU LOST!")
+            print("YOU WIN!")
             exit(0)
         else:
             board = evaluation.board
